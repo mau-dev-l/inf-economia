@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         // Usamos la URL base global o la local por defecto
         const baseURL = window.API_URL || 'http://127.0.0.1:8000';
-        const url = `${baseURL}/capa-referencia-centralidades/`;
+        const url = `${baseURL}/zonas/capa-referencia-centralidades/`;
         
         const response = await fetch(url);
         if (!response.ok) throw new Error("Error en red al cargar referencia");
