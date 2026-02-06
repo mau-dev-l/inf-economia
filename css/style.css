@@ -1,0 +1,258 @@
+/* frontend/css/style.css */
+
+/* =========================================
+   🎨 DEFINICIÓN DE LA PALETA DE COLORES
+========================================= */
+:root {
+    /* Color Principal: Tono Vino/Tinto (Extraído de tu imagen de referencia) */
+    --color-primary: #7f2b47; 
+    --color-primary-hover: #5a1e32;
+    --color-primary-light: #f3e5ec; /* Tono muy claro para fondos de selección */
+
+    /* Color de Acento: Dorado/Mostaza para detalles secundarios */
+    --color-accent: #d4a037; 
+    --color-accent-hover: #b5882e;
+
+    /* Fondos y Textos Neutros */
+    --color-bg-sidebar: #ffffff;     /* Blanco puro para la barra */
+    --color-bg-main: #f8f9fa;        /* Gris muy claro para fondos generales */
+    --color-bg-light-alt: #f0f2f5;   /* Un gris un poco más oscuro para contrastes */
+    
+    --color-text-dark: #2c2c2c;      /* Casi negro para títulos */
+    --color-text-muted: #6c757d;     /* Gris para subtítulos */
+    --color-border: #e9ecef;         /* Color de bordes suaves */
+}
+
+/* =========================================
+   🛠️ ESTRUCTURA Y SCROLLBARS (Originales)
+========================================= */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Evita scroll en toda la página */
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--color-bg-main);
+    color: var(--color-text-dark);
+}
+
+.contenedor-app {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Barra lateral */
+#sidebar {
+    width: 380px;
+    min-width: 380px;
+    border-right: 1px solid var(--color-border);
+    background-color: var(--color-bg-sidebar) !important; /* Forzamos blanco */
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+}
+
+/* Mapa */
+#map {
+    flex-grow: 1;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Scrollbar personalizado (Más elegante con la nueva paleta) */
+#sidebar::-webkit-scrollbar { width: 8px; }
+#sidebar::-webkit-scrollbar-track { background: var(--color-bg-main); }
+#sidebar::-webkit-scrollbar-thumb { 
+    background-color: #ccc; 
+    border-radius: 4px; 
+    border: 2px solid var(--color-bg-main);
+}
+#sidebar::-webkit-scrollbar-thumb:hover { background-color: var(--color-primary); }
+
+/* =========================================
+   🎨 TEMA PERSONALIZADO (Overrides a Bootstrap)
+========================================= */
+
+/* --- Tipografía y Encabezados --- */
+h1, h2, h3, h4, h5, h6, .fw-bold {
+    color: var(--color-text-dark);
+}
+.text-primary {
+    color: var(--color-primary) !important;
+}
+.text-muted {
+    color: var(--color-text-muted) !important;
+}
+.bg-light {
+    background-color: var(--color-bg-main) !important;
+}
+
+/* --- Pestañas (Nav Tabs) --- */
+.nav-tabs {
+    border-bottom: 2px solid var(--color-border);
+}
+.nav-tabs .nav-link {
+    color: var(--color-text-muted);
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.nav-tabs .nav-link:hover {
+    color: var(--color-primary);
+    border-color: transparent;
+    background-color: var(--color-bg-main);
+}
+.nav-tabs .nav-link.active {
+    color: var(--color-primary) !important;
+    background-color: transparent !important;
+    border-bottom: 3px solid var(--color-primary) !important;
+}
+
+/* --- Botones Principales (Color Vino) --- */
+.btn-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+    background-color: var(--color-primary-hover) !important;
+    border-color: var(--color-primary-hover) !important;
+}
+.btn-outline-primary {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.btn-outline-primary:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+/* --- Botones de Acento (Dorado/Verde del diseño original reemplazado) --- */
+.btn-success, .btn-warning { /* Usamos el dorado para acciones secundarias fuertes */
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: white;
+}
+.btn-success:hover, .btn-warning:hover {
+    background-color: var(--color-accent-hover) !important;
+    border-color: var(--color-accent-hover) !important;
+}
+.btn-outline-success {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+.btn-outline-success:hover {
+    background-color: var(--color-accent);
+    color: white;
+}
+
+/* --- Inputs y Controles de Formulario --- */
+.form-control:focus, .form-select:focus {
+    border-color: var(--color-primary-light);
+    box-shadow: 0 0 0 0.25rem rgba(127, 43, 71, 0.25); /* Resplandor color vino */
+}
+
+.form-check-input:checked {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+/* --- Tarjetas y Paneles --- */
+.card {
+    border-color: var(--color-border);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03) !important;
+}
+
+/* Estilo específico para las tarjetas de datos demográficos */
+.dato-card {
+    border-left-width: 4px !important;
+    transition: transform 0.2s;
+}
+.dato-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08) !important;
+}
+
+/* Reasignación de colores de bordes de tarjeta a la nueva paleta */
+.border-primary { /* Población Total - Color Principal */
+    border-color: var(--color-primary) !important;
+}
+.border-danger { /* Mujeres - Un tono más suave del principal */
+    border-color: #c06c84 !important; /* Tono rosado/vino */
+}
+.border-info { /* Hombres - Gris azulado neutro */
+    border-color: #6c757d !important;
+}
+.border-warning { /* Viviendas - Color de acento dorado */
+    border-color: var(--color-accent) !important;
+}
+
+/* --- Buscador y Listas --- */
+.list-group-item-action:hover {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+}
+
+/* =========================================
+   UTILIDADES ADICIONALES
+========================================= */
+.cursor-pointer { cursor: pointer; }
+.disabled-panel {
+    pointer-events: none;
+    filter: grayscale(100%);
+    transition: all 0.3s;
+}
+#loader-overlay { display: none; font-weight: bold; }
+.leaflet-popup-content-wrapper { border-radius: 8px; }
+.leaflet-popup-content { margin: 13px 15px; line-height: 1.5;}
+
+/* Agrega esto al final de css/style.css */
+
+.legend {
+    background: white;
+    padding: 10px;
+    line-height: 18px;
+    color: #555;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    min-width: 150px;
+}
+.legend h6 {
+    margin: 0 0 5px;
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    font-size: 12px;
+}
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+    border: 1px solid #fff;
+    box-shadow: 0 0 2px #ccc;
+}
+.linea-ref {
+    width: 20px;
+    height: 0;
+    border-top: 2px dashed #6c757d;
+    margin-right: 8px;
+}
+.legend-gradient {
+    height: 15px;
+    width: 100%;
+    background: linear-gradient(to right, blue, cyan, lime, yellow, red);
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+.legend-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #777;
+}
