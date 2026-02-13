@@ -12,6 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
         attribution: 'SIGETUX',
         zIndex: 500             
     });
+    const capaCentralidadBarrialWMS = L.tileLayer.wms('https://sigetux.tuxtla.gob.mx:8443/geoserver/ovie_tuxtla/wms', {
+        layers: 'ovie_tuxtla:centralidad_barrial02', 
+        format: 'image/png',
+        transparent: true,
+        version: '1.1.0',       
+        attribution: 'SIGETUX',
+        zIndex: 500             
+    });
+    capaCentralidadBarrialWMS.addTo(map); // Agrega la capa de centralidad barrial al mapa por defecto
 
     // 2. Reemplazar la lógica del checkbox existente
     const oldChk = document.getElementById('chkVialidades');
